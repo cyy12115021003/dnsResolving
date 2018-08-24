@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DNS工作原理</title>
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	
+	<body>
+		<div id="app">
+			<div class="public_dns clearfix">
+				<h2 class="clear centered">公共 DNS 工作原理</h2>
+				<div class="stage" :class="['phase_'+(currentIndex+1)]">
+					<div class="user"></div>
+					<div class="rootserver_tr"></div>
+					<div class="rootserver_mr"></div>
+					<div class="rootserver_br"></div>
+					<div class="server"></div>
+					<div class="webpage"></div>
+					<div class="user_resolver"></div>
+					<div class="resolver_root"></div>
+					<div class="resolver_tld"></div>
+					<div class="resolver_auth"></div>
+					<div class="resolver_user"></div>
+					<div class="desc">
+						<div v-show="index==currentIndex" v-for="(item,index) in descList">
+							 <h3>{{item.title}}</h3>
+							 <p>{{item.content}}</p>
+						</div>
+						<!--<div style="display: block;">
+							<h3>用户输入 URL</h3>
+							<p>用户在网络浏览器中输入 URL www.example.com。</p>
+						</div>
+						<div style="display: none;">
+							<h3>公共 DNS 解析器</h3>
+							<p>域名被发送至递归 DNS 解析器。</p>
+						</div>
+						<div style="display: none;">
+							<h3>根服务器</h3>
+							<p>递归解析器开始使用根服务器查找如何获取请求的顶层域名位置。</p>
+						</div>
+						<div style="display: none;">
+							<h3>TLD 名称服务器</h3>
+							<p>递归解析器可检查顶级域 (TLD) 名称服务器，以便查找如何获取该域授权服务器的位置。</p>
+						</div>
+						<div style="display: none;">
+							<h3>授权服务器</h3>
+							<p>该服务器获悉完整域名的准确位置，并将结果返回给递归解析器（IP 地址 72.13.63.55）。</p>
+						</div>
+						<div style="display: none;">
+							<h3>解析完成</h3>
+							<p>递归 DNS 解析器将 www.example.com 的实际位置返回给用户。</p>
+						</div>
+						<div style="display: none;">
+							<h3>www.example.com</h3>
+							<p>用户的网络浏览器从位于 72.13.63.55 的 www.example.com 加载页面。</p>
+						</div>-->
+					</div>
+				</div>
+				<div class="stage_control">
+					<!--<div class="bar"></div>-->					
+					<!--<div class="phase active">用户输入域名</div>
+					<div class="phase">公共 DNS 解析器</div>
+					<div class="phase">根服务器</div>
+					<div class="phase">域名服务器</div>
+					<div class="phase">授权服务器</div>
+					<div class="phase">解析完成</div>
+					<div class="phase">www.example.com</div>-->
+					<div :class="[index==currentIndex?'phase active':'phase']" @click="changePhase(index)"  v-for="(item,index) in phaseList">{{item}}</div>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script type="text/javascript">
+		/*var stage = $('.stage'),
+            desc = $('.desc'),
+            phases = $('.stage_control .phase'),
+			n = 2;
+		//改变阶段事件
+		function changePhase(index) {
+			var control = phases.eq(index-1),
+				phaseClass = 'phase_' + index;
+				
+			stage.removeClass().addClass('stage ' + phaseClass);
+			desc.find('div').hide().eq(index - 1).fadeIn(600);
+			control.addClass('active').siblings().removeClass('active');
+		}
+		
+		var cyclePhase = window.setInterval(function() {
+			changePhase(n++);
+			
+			if(n > phases.length) {
+				n = 1;
+			}
+		}, 5000);
+		//点击底部步骤点
+		$('.stage_control').on('click', '.phase', function() {
+			var index = $(this).index();
+			clearInterval(cyclePhase);
+			changePhase(index);
+		});*/
+		var app = new Vue({
+			el:'#app',
+			data:{
+				currentIndex : 0,	
+				cyclePhase : null,
+				phaseList:[
+					'用户输入域名','公共 DNS 解析器','根服务器','域名服务器','授权服务器','解析完成','www.example.com'
+				],
+				descList:[
+					{title:'用户输入 URL',content:'用户在网络浏览器中输入 URL www.example.com。'},
+					{title:'公共 DNS 解析器',content:'域名被发送至递归 DNS 解析器。'},
+					{title:'根服务器',content:'递归解析器开始使用根服务器查找如何获取请求的顶层域名位置。'},
+					{title:'TLD 名称服务器',content:'递归解析器可检查顶级域 (TLD) 名称服务器，以便查找如何获取该域授权服务器的位置。'},
+					{title:'授权服务器',content:'该服务器获悉完整域名的准确位置，并将结果返回给递归解析器（IP 地址192.168.10.222）。'},
+					{title:'解析完成',content:'递归 DNS 解析器将 www.example.com 的实际位置返回给用户。'},
+					{title:'www.example.com',content:'用户的网络浏览器从位于192.168.10.222的 www.example.com 加载页面。'}
+				]
+			},
+			created(){				
+				this.cyclePhase = window.setInterval(()=>{
+					this.currentIndex++;						
+					if(this.currentIndex > this.phaseList.length-1) {
+						this.currentIndex = 0;
+					}
+				},5000)				
+			},
+			methods:{				
+				changePhase:function(index){					
+					this.currentIndex = index;					
+					clearInterval(this.cyclePhase);
+				}			
+			}
+			
+		})
+		
+	</script>
+	
+	</body>
+</html>

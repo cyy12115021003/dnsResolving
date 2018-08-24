@@ -1,0 +1,78 @@
+/*公共样式*/
+.centered{text-align: center;}
+.clear{clear: both;}
+.public_dns{max-width: 1100px;margin: 0 auto;}
+.clearfix:after, .clearfix:before{content:"";display: table;}/*清除浮动*/
+
+/*公共样式*/
+
+.public_dns .stage{position: relative;min-height: 550px;margin: 0 auto;}
+.public_dns .stage>div{position: absolute;}
+.public_dns .user{width:160px;height:190px;top:140px;left:45px}
+.public_dns .rootserver_tr{width:150px;height:120px;top:20px;right:45px}
+.public_dns .rootserver_mr{width:150px;height:120px;top:170px;right:45px}
+.public_dns .rootserver_br{width:150px;height:120px;top:320px;right:45px}
+.public_dns .server{width: 160px;height: 260px;top: 100px;left:450px;}
+.public_dns .webpage{width:160px;height:190px;top:140px;left:45px}
+.public_dns .user_resolver{width:148px;height:120px;left:230px;top:200px}
+.public_dns .resolver_root{width:148px;height:120px;right:250px;top:22px}
+.public_dns .resolver_tld{width:148px;height:120px;right:200px;top:172px}
+.public_dns .resolver_auth{width:148px;height:120px;right:200px;top:320px}
+.public_dns .resolver_user{width:148px;height:120px;left:212px;top:200px}
+.public_dns .desc{width:696px;top:443px;left:150px;text-align:center;}
+
+
+.public_dns .stage_control{position: relative;height:15px;background:#eee;border-radius:8px;-webkit-box-shadow:inset 0 1px 3px 1px #bbb;box-shadow:inset 0 1px 3px 1px #bbb;z-index:1}
+
+.public_dns .bar{position:absolute;top:0;left:0;right:0;height:15px;background:#eee;border-radius:8px;-webkit-box-shadow:inset 0 1px 3px 1px #bbb;box-shadow:inset 0 1px 3px 1px #bbb;z-index:1}
+.public_dns .phase{float:left;position:relative;text-align:center;width:14%;background:transparent url(../img/slider_timeline-marker.png) no-repeat top;z-index:2;padding:37px 0 0;cursor:pointer}
+.public_dns .phase.active:before{content:"";position:absolute;width:100%;height:36px;top:-11px;left:0;background:transparent url(../img/slider_timeline-target.png) no-repeat top}
+.public_dns .phase{font-size:12px;line-height:1.5;}
+
+
+.public_dns .phase_1 .user,
+.public_dns .phase_2 .user,
+.public_dns .phase_3 .user,
+.public_dns .phase_4 .user,
+.public_dns .phase_5 .user,
+.public_dns .phase_6 .user {background: transparent url(../img/pdns_user.png) no-repeat}
+
+.public_dns .phase_2 .server,
+.public_dns .phase_3 .server,
+.public_dns .phase_4 .server,
+.public_dns .phase_5 .server,
+.public_dns .phase_6 .server,
+.public_dns .phase_7 .server {
+	background: transparent url(../img/pdns_vrsn-recres.png) no-repeat center top
+}
+
+.public_dns .phase_3 .rootserver_tr,
+.public_dns .phase_4 .rootserver_tr,
+.public_dns .phase_5 .rootserver_tr,
+.public_dns .phase_6 .rootserver_tr,
+.public_dns .phase_7 .rootserver_tr {
+	background: transparent url(../img/pdns_server-root.png) no-repeat
+}
+
+.public_dns .phase_4 .rootserver_mr,
+.public_dns .phase_5 .rootserver_mr,
+.public_dns .phase_6 .rootserver_mr,
+.public_dns .phase_7 .rootserver_mr {
+	background: transparent url(../img/pdns_server-tld.png) no-repeat
+}
+
+.public_dns .phase_5 .rootserver_br,
+.public_dns .phase_6 .rootserver_br,
+.public_dns .phase_7 .rootserver_br {
+	background: transparent url(../img/pdns_server-auth.png) no-repeat
+}
+.public_dns .phase_7 .webpage {
+	background: transparent url(../img/pdns_webpage.png) no-repeat
+}
+
+
+.public_dns .phase_4 .resolver_tld{background: transparent url(../img/resolver-tld.gif) no-repeat top;}
+.public_dns .phase_2 .user_resolver{background:transparent url(../img/user-resolver.gif) no-repeat top ;}
+.public_dns .phase_3 .resolver_root{background:transparent url(../img/resolver-root.gif) no-repeat top ;}
+.public_dns .phase_6 .resolver_user{background: transparent url(../img/resolver-user.gif) no-repeat top;}
+.public_dns .phase_5 .resolver_auth{background:transparent url(../img/resolver-auth.gif) no-repeat top;}
